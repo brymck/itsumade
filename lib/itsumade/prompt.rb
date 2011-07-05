@@ -12,7 +12,7 @@ module Itsumade
         puts "\n"
         i = 0
         @manager.each do |store|
-          puts "#{'% 2d' % i}: #{store}"
+          puts "#{'% 2d' % i}: #{store}" + store.bar
           i += 1
         end
 
