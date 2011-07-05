@@ -1,3 +1,4 @@
+require 'ansi/code'
 require 'itsumade/version'
 require 'itsumade/store'
 require 'itsumade/manager'

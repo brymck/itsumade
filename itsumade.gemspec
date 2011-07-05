@@ -12,7 +12,10 @@ Gem::Specification.new do |s|
   s.description = %q{Eki no norikae annai}
    
   s.rubyforge_project = "itsumade"
-   
+
+  s.add_dependency('bundler', '~> 1.0.15')
+  s.add_dependency('ansi',    '~> 1.3.0')
+
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }

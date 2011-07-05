@@ -2,8 +2,4 @@
 - !ruby/object:Itsumade::Store 
   hours: []
 
-  name: Hello
-- !ruby/object:Itsumade::Store 
-  hours: []
-
-  name: blah
+  name: Tokyo Metro

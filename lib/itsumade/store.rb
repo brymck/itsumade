@@ -1,14 +1,21 @@
-require 'itsumade/ansi'
 require 'itsumade/opening_hours'
 
 module Itsumade
   class Store
-    include Ansi
-    attr_reader :name
+    include Enumerable
+    attr_accessor :name
 
     def initialize(name)
       @name = name
       @hours = []
+    end
+
+    def each
+      @hours.each { |hours| yield hours }
+    end
+
+    def length
+      @hours.length
     end
 
     def <<(hours)
@@ -24,7 +31,7 @@ module Itsumade
     end
 
     def to_s
-      name.red
+      name
     end
   end
 end

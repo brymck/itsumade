@@ -48,6 +48,11 @@ module Itsumade
       end
     end
 
+    def delete_at(index)
+      @stores.delete_at index
+      save
+    end
+
     def <<(name)
       @stores << Store.new(name)
       save
