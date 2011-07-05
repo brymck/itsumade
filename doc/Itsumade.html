@@ -44,6 +44,9 @@
 						<li><a href="./lib/itsumade/version_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
 							class="thickbox" title="lib/itsumade/version.rb">lib/itsumade/version.rb</a></li>
 					
+						<li><a href="./lib/itsumade/time_builder_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/itsumade/time_builder.rb">lib/itsumade/time_builder.rb</a></li>
+					
 						<li><a href="./lib/itsumade/store_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
 							class="thickbox" title="lib/itsumade/store.rb">lib/itsumade/store.rb</a></li>
 					
@@ -73,6 +76,8 @@
 			<div id="namespace-list-section" class="section">
 				<h3 class="section-header">Namespace</h3>
 				<ul class="link-list">
+					
+					<li><span class="type">MODULE</span> <a href="Itsumade/TimeBuilder.html">Itsumade::TimeBuilder</a></li>
 					
 					<li><span class="type">CLASS</span> <a href="Itsumade/Manager.html">Itsumade::Manager</a></li>
 					
@@ -145,6 +150,8 @@
 					<li><a href="./Itsumade/Prompt.html">Itsumade::Prompt</a></li>
 				
 					<li><a href="./Itsumade/Store.html">Itsumade::Store</a></li>
+				
+					<li><a href="./Itsumade/TimeBuilder.html">Itsumade::TimeBuilder</a></li>
 				
 				</ul>
 				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -241,12 +248,12 @@
 					<div class="method-source-code"
 						id="run-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/itsumade.rb, line 11</span>
-11:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>
-12:       <span class="ruby-ivar">@manager</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Manager</span>.<span class="ruby-identifier">new</span>
-13:       <span class="ruby-ivar">@prompt</span>  <span class="ruby-operator">||=</span> <span class="ruby-constant">Prompt</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@manager</span>)
-14:       <span class="ruby-ivar">@prompt</span>.<span class="ruby-identifier">run</span>
-15:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/itsumade.rb, line 13</span>
+13:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run</span>
+14:       <span class="ruby-ivar">@manager</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Manager</span>.<span class="ruby-identifier">new</span>
+15:       <span class="ruby-ivar">@prompt</span>  <span class="ruby-operator">||=</span> <span class="ruby-constant">Prompt</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@manager</span>)
+16:       <span class="ruby-ivar">@prompt</span>.<span class="ruby-identifier">run</span>
+17:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

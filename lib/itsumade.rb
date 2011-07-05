@@ -1,5 +1,7 @@
 require 'ansi/code'
+require 'yaml'
 require 'itsumade/version'
+require 'itsumade/time_builder'
 require 'itsumade/store'
 require 'itsumade/manager'
 require 'itsumade/prompt'

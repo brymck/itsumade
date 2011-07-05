@@ -1,31 +1,19 @@
 module Itsumade
   class OpeningHours
     attr_accessor :start, :end
-    BASE_YEAR  = 1970
-    BASE_MONTH = 1
-    BASE_DAY   = 4
 
-    def initialize(weekday, start_hour, start_min, end_hour, end_min)
-      @start = build_time(weekday, start_hour, start_min)
-      weekday += end_hour / 24
-      @end = build_time(weekday, end_hour % 24, end_min)
+    def initialize(start_time, end_time)
+      @start, @end = start_time, end_time
     end
 
-    def include?(weekday, hour, min)
-      compare_time = build_time(weekday, hour, min)
-      @start <= compare_time && @end >= compare_time
+    def include?(time)
+      @start <= time && @end >= time
     end
 
     def to_s
       # Allows lazy creation of @text
-      @text ||= "#{@start.strftime('%a: %I:%M %p')} - " \
-                "#{@end.strftime('%I:%M %p')}".gsub(/0([1-9]:)/, ' \1')
-    end
-
-    private
-    
-    def build_time(weekday, hour, min)
-      Time.utc(BASE_YEAR, BASE_MONTH, BASE_DAY + weekday, hour, min)
+      @text ||= "#{@start.strftime('%a: %l:%M %p')} - " \
+                "#{@end.strftime('%l:%M %p')}"
     end
   end
 end

@@ -29,18 +29,25 @@ module Itsumade
 
     alias size length
 
+    def sort!
+      @stores.sort! { |x, y| x.name <=> y.name }
+    end
+
     def save
       output = File.new('data.yml', 'w')
       output.puts YAML.dump(@stores)
       output.close
     end
 
+    alias update save
+
     def load
       begin
         output = File.new('data.yml', 'r')
         @stores = YAML.load(output.read)
+        @stores.each { |store| store.observers = [ self ] }
         output.close
-      rescue
+      rescue Errno::ENOENT
         puts 'No stores currently saved.'
       end
     end
@@ -51,7 +58,7 @@ module Itsumade
     end
 
     def <<(name)
-      @stores << Store.new(name)
+      @stores << Store.new(name, self)
       save
     end
 
@@ -60,7 +67,7 @@ module Itsumade
     end
 
     def []=(index, name)
-      @stores[index] = Store.new(name)
+      @stores[index] = Store.new(name, self)
       save
     end
   end

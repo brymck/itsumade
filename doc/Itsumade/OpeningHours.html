@@ -71,8 +71,6 @@
 					
 					<li><a href="#method-c-new">::new</a></li>
 					
-					<li><a href="#method-i-build_time">#build_time</a></li>
-					
 					<li><a href="#method-i-include%3F">#include?</a></li>
 					
 					<li><a href="#method-i-to_s">#to_s</a></li>
@@ -129,6 +127,8 @@
 				
 					<li><a href="../Itsumade/Store.html">Itsumade::Store</a></li>
 				
+					<li><a href="../Itsumade/TimeBuilder.html">Itsumade::TimeBuilder</a></li>
+				
 				</ul>
 				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
 			</div>
@@ -145,28 +145,6 @@
 		</div>
 
 		<!-- Constants -->
-		
-		<div id="constants-list" class="section">
-			<h3 class="section-header">Constants</h3>
-			<dl>
-			
-				<dt><a name="BASE_YEAR">BASE_YEAR</a></dt>
-				
-				<dd class="description"></dd>
-				
-			
-				<dt><a name="BASE_MONTH">BASE_MONTH</a></dt>
-				
-				<dd class="description"></dd>
-				
-			
-				<dt><a name="BASE_DAY">BASE_DAY</a></dt>
-				
-				<dd class="description"></dd>
-				
-			
-			</dl>
-		</div>
 		
 
 		<!-- Attributes -->
@@ -224,7 +202,7 @@
 				<div class="method-heading">
 				
 					<span class="method-name">new</span><span
-						class="method-args">(weekday, start_hour, start_min, end_hour, end_min)</span>
+						class="method-args">(start_time, end_time)</span>
 					<span class="method-click-advice">click to toggle source</span>
 				
 				</div>
@@ -238,12 +216,10 @@
 					<div class="method-source-code"
 						id="new-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/itsumade/opening_hours.rb, line 8</span>
- 8:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">weekday</span>, <span class="ruby-identifier">start_hour</span>, <span class="ruby-identifier">start_min</span>, <span class="ruby-identifier">end_hour</span>, <span class="ruby-identifier">end_min</span>)
- 9:       <span class="ruby-ivar">@start</span> = <span class="ruby-identifier">build_time</span>(<span class="ruby-identifier">weekday</span>, <span class="ruby-identifier">start_hour</span>, <span class="ruby-identifier">start_min</span>)
-10:       <span class="ruby-identifier">weekday</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">end_hour</span> <span class="ruby-operator">/</span> <span class="ruby-value">24</span>
-11:       <span class="ruby-ivar">@end</span> = <span class="ruby-identifier">build_time</span>(<span class="ruby-identifier">weekday</span>, <span class="ruby-identifier">end_hour</span> <span class="ruby-operator">%</span> <span class="ruby-value">24</span>, <span class="ruby-identifier">end_min</span>)
-12:     <span class="ruby-keyword kw">end</span></pre>
+   <span class="ruby-comment cmt"># File lib/itsumade/opening_hours.rb, line 5</span>
+5:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">start_time</span>, <span class="ruby-identifier">end_time</span>)
+6:       <span class="ruby-ivar">@start</span>, <span class="ruby-ivar">@end</span> = <span class="ruby-identifier">start_time</span>, <span class="ruby-identifier">end_time</span>
+7:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -266,7 +242,7 @@
 				<div class="method-heading">
 				
 					<span class="method-name">include?</span><span
-						class="method-args">(weekday, hour, min)</span>
+						class="method-args">(time)</span>
 					<span class="method-click-advice">click to toggle source</span>
 				
 				</div>
@@ -280,11 +256,10 @@
 					<div class="method-source-code"
 						id="include--source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/itsumade/opening_hours.rb, line 14</span>
-14:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">include?</span>(<span class="ruby-identifier">weekday</span>, <span class="ruby-identifier">hour</span>, <span class="ruby-identifier">min</span>)
-15:       <span class="ruby-identifier">compare_time</span> = <span class="ruby-identifier">build_time</span>(<span class="ruby-identifier">weekday</span>, <span class="ruby-identifier">hour</span>, <span class="ruby-identifier">min</span>)
-16:       <span class="ruby-ivar">@start</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">compare_time</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@end</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">compare_time</span>
-17:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/itsumade/opening_hours.rb, line 9</span>
+ 9:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">include?</span>(<span class="ruby-identifier">time</span>)
+10:       <span class="ruby-ivar">@start</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">time</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@end</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-identifier">time</span>
+11:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -315,51 +290,11 @@
 					<div class="method-source-code"
 						id="to-s-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/itsumade/opening_hours.rb, line 19</span>
-19:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
-20:       <span class="ruby-comment cmt"># Allows lazy creation of @text</span>
-21:       <span class="ruby-ivar">@text</span> <span class="ruby-operator">||=</span> <span class="ruby-node">&quot;#{@start.strftime('%a: %I:%M %p')} - &quot;</span>                  <span class="ruby-node">&quot;#{@end.strftime('%I:%M %p')}&quot;</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/0([1-9]:)/</span>, <span class="ruby-value str">' \1'</span>)
-22:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
-
-				
-
-				
-			</div>
-
-		
-		</div>
-	
-		<div id="private-instance-method-details" class="method-section section">
-			<h3 class="section-header">Private Instance Methods</h3>
-
-		
-			<div id="build-time-method" class="method-detail ">
-				<a name="method-i-build_time"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">build_time</span><span
-						class="method-args">(weekday, hour, min)</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="build-time-source">
-<pre>
-    <span class="ruby-comment cmt"># File lib/itsumade/opening_hours.rb, line 27</span>
-27:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">build_time</span>(<span class="ruby-identifier">weekday</span>, <span class="ruby-identifier">hour</span>, <span class="ruby-identifier">min</span>)
-28:       <span class="ruby-constant">Time</span>.<span class="ruby-identifier">utc</span>(<span class="ruby-constant">BASE_YEAR</span>, <span class="ruby-constant">BASE_MONTH</span>, <span class="ruby-constant">BASE_DAY</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">weekday</span>, <span class="ruby-identifier">hour</span>, <span class="ruby-identifier">min</span>)
-29:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/itsumade/opening_hours.rb, line 13</span>
+13:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
+14:       <span class="ruby-comment cmt"># Allows lazy creation of @text</span>
+15:       <span class="ruby-ivar">@text</span> <span class="ruby-operator">||=</span> <span class="ruby-node">&quot;#{@start.strftime('%a: %l:%M %p')} - &quot;</span>                  <span class="ruby-node">&quot;#{@end.strftime('%l:%M %p')}&quot;</span>
+16:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
