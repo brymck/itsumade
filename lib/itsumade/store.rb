@@ -18,6 +18,10 @@ module Itsumade
       @hours.length
     end
 
+    def delete_at(index)
+      @hours.delete_at index
+    end
+
     def <<(hours)
       @hours << hours
     end
