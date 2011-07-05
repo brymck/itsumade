@@ -1,0 +1,11 @@
+== Installation
+
+1. Copypasta the following into a console:
+
+    git clone http://github.com/brymck/itsumade
+    cd itsumade
+    rake install
+
+2. Run in the same console:
+
+    itsumade
