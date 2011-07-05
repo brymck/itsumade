@@ -4,6 +4,7 @@ require 'itsumade/store'
 module Itsumade
   class Manager
     include Enumerable
+    YAML_FILENAME = 'data.yml'
     attr_reader :stores
 
     def initialize
@@ -34,7 +35,7 @@ module Itsumade
     end
 
     def save
-      output = File.new('data.yml', 'w')
+      output = File.new(YAML_FILENAME, 'w')
       output.puts YAML.dump(@stores)
       output.close
     end
@@ -43,9 +44,9 @@ module Itsumade
 
     def load
       begin
-        output = File.new('data.yml', 'r')
+        output = File.new(YAML_FILENAME, 'r')
         @stores = YAML.load(output.read)
-        @stores.each { |store| store.observers = [ self ] }
+        @stores.each { |store| store.observers = [self] }
         output.close
       rescue Errno::ENOENT
         puts 'No stores currently saved.'

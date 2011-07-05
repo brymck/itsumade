@@ -79,6 +79,8 @@
 					
 					<li><a href="#method-i-edit_store">#edit_store</a></li>
 					
+					<li><a href="#method-i-get_confirmation">#get_confirmation</a></li>
+					
 					<li><a href="#method-i-get_response">#get_response</a></li>
 					
 					<li><a href="#method-i-list_options">#list_options</a></li>
@@ -294,30 +296,30 @@
 					<div class="method-source-code"
 						id="add-hours-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/itsumade/prompt.rb, line 62</span>
-62:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_hours</span>(<span class="ruby-identifier">index</span>)
-63:       <span class="ruby-identifier">breadcrumbs</span> <span class="ruby-ivar">@manager</span>[<span class="ruby-identifier">index</span>].<span class="ruby-identifier">name</span>, <span class="ruby-value str">'add hours'</span>
-64:       <span class="ruby-identifier">list_options</span> <span class="ruby-constant">DAYS</span>
-65:       <span class="ruby-identifier">weekdays</span>   = <span class="ruby-identifier">get_response</span>(<span class="ruby-value str">'Enter your selection:      '</span>).<span class="ruby-identifier">to_i</span>
-66:       <span class="ruby-identifier">start_hour</span> = <span class="ruby-identifier">get_response</span>(<span class="ruby-value str">'Enter start hour (0-23+):  '</span>).<span class="ruby-identifier">to_i</span>
-67:       <span class="ruby-identifier">start_min</span>  = <span class="ruby-identifier">get_response</span>(<span class="ruby-value str">'Enter start minute (0-59): '</span>).<span class="ruby-identifier">to_i</span>
-68:       <span class="ruby-identifier">end_hour</span>   = <span class="ruby-identifier">get_response</span>(<span class="ruby-value str">'Enter start hour (0-23+):  '</span>).<span class="ruby-identifier">to_i</span>
-69:       <span class="ruby-identifier">end_min</span>    = <span class="ruby-identifier">get_response</span>(<span class="ruby-value str">'Enter start minute (0-59): '</span>).<span class="ruby-identifier">to_i</span>
-70:       
-71:       <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">weekdays</span>
-72:       <span class="ruby-keyword kw">when</span> <span class="ruby-value">7</span> <span class="ruby-comment cmt"># All weekdays</span>
-73:         <span class="ruby-identifier">weekdays</span> = [<span class="ruby-value">1</span>, <span class="ruby-value">2</span>, <span class="ruby-value">3</span>, <span class="ruby-value">4</span>, <span class="ruby-value">5</span>]
-74:       <span class="ruby-keyword kw">when</span> <span class="ruby-value">8</span> <span class="ruby-comment cmt"># All weekend</span>
-75:         <span class="ruby-identifier">weekdays</span> = [<span class="ruby-value">0</span>, <span class="ruby-value">6</span>]
-76:       <span class="ruby-keyword kw">else</span>
-77:         <span class="ruby-identifier">weekdays</span> = [<span class="ruby-identifier">weekdays</span>]
-78:       <span class="ruby-keyword kw">end</span>
-79: 
-80:       <span class="ruby-identifier">weekdays</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">weekday</span><span class="ruby-operator">|</span>
-81:         <span class="ruby-ivar">@manager</span>[<span class="ruby-identifier">index</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">OpeningHours</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">TimeBuilder</span>.<span class="ruby-identifier">build</span>(<span class="ruby-identifier">weekday</span>, <span class="ruby-identifier">start_hour</span>, <span class="ruby-identifier">start_min</span>),
-82:                                             <span class="ruby-constant">TimeBuilder</span>.<span class="ruby-identifier">build</span>(<span class="ruby-identifier">weekday</span>, <span class="ruby-identifier">end_hour</span>, <span class="ruby-identifier">end_min</span>))
-83:       <span class="ruby-keyword kw">end</span>
-84:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/itsumade/prompt.rb, line 66</span>
+66:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_hours</span>(<span class="ruby-identifier">index</span>)
+67:       <span class="ruby-identifier">breadcrumbs</span> <span class="ruby-ivar">@manager</span>[<span class="ruby-identifier">index</span>].<span class="ruby-identifier">name</span>, <span class="ruby-value str">'add hours'</span>
+68:       <span class="ruby-identifier">list_options</span> <span class="ruby-constant">DAYS</span>
+69:       <span class="ruby-identifier">weekdays</span>   = <span class="ruby-identifier">get_response</span>(<span class="ruby-value str">'Enter your selection:      '</span>).<span class="ruby-identifier">to_i</span>
+70:       <span class="ruby-identifier">start_hour</span> = <span class="ruby-identifier">get_response</span>(<span class="ruby-value str">'Enter start hour (0-23+):  '</span>).<span class="ruby-identifier">to_i</span>
+71:       <span class="ruby-identifier">start_min</span>  = <span class="ruby-identifier">get_response</span>(<span class="ruby-value str">'Enter start minute (0-59): '</span>).<span class="ruby-identifier">to_i</span>
+72:       <span class="ruby-identifier">end_hour</span>   = <span class="ruby-identifier">get_response</span>(<span class="ruby-value str">'Enter start hour (0-23+):  '</span>).<span class="ruby-identifier">to_i</span>
+73:       <span class="ruby-identifier">end_min</span>    = <span class="ruby-identifier">get_response</span>(<span class="ruby-value str">'Enter start minute (0-59): '</span>).<span class="ruby-identifier">to_i</span>
+74:       
+75:       <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">weekdays</span>
+76:       <span class="ruby-keyword kw">when</span> <span class="ruby-value">7</span> <span class="ruby-comment cmt"># All weekdays</span>
+77:         <span class="ruby-identifier">weekdays</span> = <span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">5</span>
+78:       <span class="ruby-keyword kw">when</span> <span class="ruby-value">8</span> <span class="ruby-comment cmt"># All weekend</span>
+79:         <span class="ruby-identifier">weekdays</span> = [<span class="ruby-value">0</span>, <span class="ruby-value">6</span>]
+80:       <span class="ruby-keyword kw">else</span>
+81:         <span class="ruby-identifier">weekdays</span> = [<span class="ruby-identifier">weekdays</span>]
+82:       <span class="ruby-keyword kw">end</span>
+83: 
+84:       <span class="ruby-identifier">weekdays</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">weekday</span><span class="ruby-operator">|</span>
+85:         <span class="ruby-ivar">@manager</span>[<span class="ruby-identifier">index</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">OpeningHours</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">TimeBuilder</span>.<span class="ruby-identifier">build</span>(<span class="ruby-identifier">weekday</span>, <span class="ruby-identifier">start_hour</span>, <span class="ruby-identifier">start_min</span>),
+86:                                             <span class="ruby-constant">TimeBuilder</span>.<span class="ruby-identifier">build</span>(<span class="ruby-identifier">weekday</span>, <span class="ruby-identifier">end_hour</span>, <span class="ruby-identifier">end_min</span>))
+87:       <span class="ruby-keyword kw">end</span>
+88:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -348,11 +350,11 @@
 					<div class="method-source-code"
 						id="add-store-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/itsumade/prompt.rb, line 86</span>
-86:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_store</span>
-87:       <span class="ruby-ivar">@manager</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">get_response</span>(<span class="ruby-value str">'Enter name: '</span>)
-88:       <span class="ruby-identifier">edit_store</span>(<span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>)
-89:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/itsumade/prompt.rb, line 90</span>
+90:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">add_store</span>
+91:       <span class="ruby-ivar">@manager</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">get_response</span>(<span class="ruby-value str">'Enter name: '</span>)
+92:       <span class="ruby-identifier">edit_store</span>(<span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>)
+93:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -419,32 +421,67 @@
 					<div class="method-source-code"
 						id="edit-store-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/itsumade/prompt.rb, line 91</span>
- 91:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">edit_store</span>(<span class="ruby-identifier">index</span>)
- 92:       <span class="ruby-keyword kw">while</span> <span class="ruby-keyword kw">true</span>
- 93:         <span class="ruby-identifier">breadcrumbs</span> <span class="ruby-ivar">@manager</span>[<span class="ruby-identifier">index</span>].<span class="ruby-identifier">name</span>
- 94:         <span class="ruby-identifier">list_options</span> <span class="ruby-ivar">@manager</span>[<span class="ruby-identifier">index</span>]
- 95:         <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot; a: Add hours\n&quot;</span>               <span class="ruby-value str">&quot; c: Change name\n&quot;</span>               <span class="ruby-value str">&quot; r: Remove\n&quot;</span>               <span class="ruby-value str">' x: Exit'</span>
- 96:         <span class="ruby-identifier">response</span> = <span class="ruby-identifier">get_response</span>(<span class="ruby-value str">'Your selection: '</span>)
- 97:         <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">response</span>
- 98:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'a'</span>
- 99:           <span class="ruby-identifier">add_hours</span> <span class="ruby-identifier">index</span>
-100:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'c'</span>
-101:           <span class="ruby-ivar">@manager</span>[<span class="ruby-identifier">index</span>].<span class="ruby-identifier">name</span> = <span class="ruby-identifier">get_response</span>(<span class="ruby-value str">'Enter name: '</span>)
-102:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'r'</span>
-103:           <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">delete_at</span> <span class="ruby-identifier">index</span>
-104:           <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">true</span>
-105:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'x'</span>
-106:           <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">sort!</span>
-107:           <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
-108:         <span class="ruby-keyword kw">else</span>
-109:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">valid_index?</span>(<span class="ruby-identifier">response</span>, <span class="ruby-ivar">@manager</span>[<span class="ruby-identifier">index</span>].<span class="ruby-identifier">length</span>)
-110:             <span class="ruby-identifier">print</span> <span class="ruby-node">&quot;Delete #{@manager[index][response.to_i]}? (Y/N): &quot;</span>
-111:             <span class="ruby-ivar">@manager</span>[<span class="ruby-identifier">index</span>].<span class="ruby-identifier">delete_at</span>(<span class="ruby-identifier">response</span>.<span class="ruby-identifier">to_i</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">gets</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">downcase</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'y'</span>
-112:           <span class="ruby-keyword kw">end</span>
-113:         <span class="ruby-keyword kw">end</span>
-114:       <span class="ruby-keyword kw">end</span>
-115:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/itsumade/prompt.rb, line 95</span>
+ 95:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">edit_store</span>(<span class="ruby-identifier">index</span>)
+ 96:       <span class="ruby-keyword kw">while</span> <span class="ruby-keyword kw">true</span>
+ 97:         <span class="ruby-identifier">breadcrumbs</span> <span class="ruby-ivar">@manager</span>[<span class="ruby-identifier">index</span>].<span class="ruby-identifier">name</span>
+ 98:         <span class="ruby-identifier">list_options</span> <span class="ruby-ivar">@manager</span>[<span class="ruby-identifier">index</span>]
+ 99:         <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot; a: Add hours\n&quot;</span>               <span class="ruby-value str">&quot; c: Change name\n&quot;</span>               <span class="ruby-value str">&quot; r: Remove\n&quot;</span>               <span class="ruby-value str">' x: Exit'</span>
+100:         <span class="ruby-identifier">response</span> = <span class="ruby-identifier">get_response</span>(<span class="ruby-value str">'Your selection: '</span>)
+101:         <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">response</span>
+102:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'a'</span>
+103:           <span class="ruby-identifier">add_hours</span> <span class="ruby-identifier">index</span>
+104:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'c'</span>
+105:           <span class="ruby-ivar">@manager</span>[<span class="ruby-identifier">index</span>].<span class="ruby-identifier">name</span> = <span class="ruby-identifier">get_response</span>(<span class="ruby-value str">'Enter name: '</span>)
+106:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'r'</span>
+107:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">get_confirmation</span>(<span class="ruby-node">&quot;store #{@manager[index].name}&quot;</span>)
+108:             <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">delete_at</span> <span class="ruby-identifier">index</span>
+109:             <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
+110:           <span class="ruby-keyword kw">end</span>
+111:         <span class="ruby-keyword kw">when</span> <span class="ruby-value str">'x'</span>
+112:           <span class="ruby-ivar">@manager</span>.<span class="ruby-identifier">sort!</span>
+113:           <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
+114:         <span class="ruby-keyword kw">else</span>
+115:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">valid_index?</span>(<span class="ruby-identifier">response</span>, <span class="ruby-ivar">@manager</span>[<span class="ruby-identifier">index</span>].<span class="ruby-identifier">length</span>)
+116:             <span class="ruby-ivar">@manager</span>[<span class="ruby-identifier">index</span>].<span class="ruby-identifier">delete_at</span>(<span class="ruby-identifier">response</span>.<span class="ruby-identifier">to_i</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">get_confirmation</span>(<span class="ruby-node">&quot;time ##{response}&quot;</span>)
+117:           <span class="ruby-keyword kw">end</span>
+118:         <span class="ruby-keyword kw">end</span>
+119:       <span class="ruby-keyword kw">end</span>
+120:     <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="get-confirmation-method" class="method-detail ">
+				<a name="method-i-get_confirmation"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get_confirmation</span><span
+						class="method-args">(name)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					
+					
+
+					
+					<div class="method-source-code"
+						id="get-confirmation-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/itsumade/prompt.rb, line 53</span>
+53:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get_confirmation</span>(<span class="ruby-identifier">name</span>)
+54:       <span class="ruby-identifier">get_response</span>(<span class="ruby-node">&quot;Delete #{name}? (Y/N): &quot;</span>)[<span class="ruby-value">0</span>].<span class="ruby-identifier">downcase</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'y'</span>
+55:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -548,15 +585,15 @@
 					<div class="method-source-code"
 						id="valid-index--source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/itsumade/prompt.rb, line 53</span>
-53:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">valid_index?</span>(<span class="ruby-identifier">response</span>, <span class="ruby-identifier">length</span>)
-54:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">response</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^[0-9]+$/</span>
-55:         <span class="ruby-identifier">response_index</span> = <span class="ruby-identifier">response</span>.<span class="ruby-identifier">to_i</span>
-56:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">response_index</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">response_index</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">length</span>
-57:       <span class="ruby-keyword kw">else</span>
-58:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
-59:       <span class="ruby-keyword kw">end</span>
-60:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/itsumade/prompt.rb, line 57</span>
+57:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">valid_index?</span>(<span class="ruby-identifier">response</span>, <span class="ruby-identifier">length</span>)
+58:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">response</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^[0-9]+$/</span>
+59:         <span class="ruby-identifier">response_index</span> = <span class="ruby-identifier">response</span>.<span class="ruby-identifier">to_i</span>
+60:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">response_index</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">response_index</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">length</span>
+61:       <span class="ruby-keyword kw">else</span>
+62:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span>
+63:       <span class="ruby-keyword kw">end</span>
+64:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

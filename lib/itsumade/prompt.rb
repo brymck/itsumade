@@ -50,6 +50,10 @@ module Itsumade
       gets.chomp
     end
 
+    def get_confirmation(name)
+      get_response("Delete #{name}? (Y/N): ")[0].downcase == 'y'
+    end
+
     def valid_index?(response, length)
       if response =~ /^[0-9]+$/
         response_index = response.to_i
@@ -70,7 +74,7 @@ module Itsumade
       
       case weekdays
       when 7 # All weekdays
-        weekdays = [1, 2, 3, 4, 5]
+        weekdays = 1..5
       when 8 # All weekend
         weekdays = [0, 6]
       else
@@ -103,15 +107,16 @@ module Itsumade
         when 'c'
           @manager[index].name = get_response('Enter name: ')
         when 'r'
-          @manager.delete_at index
-          return true
+          if get_confirmation("store #{@manager[index].name}")
+            @manager.delete_at index
+            return false
+          end
         when 'x'
           @manager.sort!
           return false
         else
           if valid_index?(response, @manager[index].length)
-            print "Delete #{@manager[index][response.to_i]}? (Y/N): "
-            @manager[index].delete_at(response.to_i) if gets[0].downcase == 'y'
+            @manager[index].delete_at(response.to_i) if get_confirmation("time ##{response}")
           end
         end
       end

@@ -1,4 +1,4 @@
-Wed, 06 Jul 2011 03:26:20 +0900
+Wed, 06 Jul 2011 03:55:55 +0900
 ./README.rdoc	Wed, 06 Jul 2011 01:09:40 +0900
 ./LICENSE	Tue, 05 Jul 2011 16:33:32 +0900
 ./bin/itsumade	Tue, 05 Jul 2011 16:34:04 +0900
@@ -7,7 +7,7 @@ Wed, 06 Jul 2011 03:26:20 +0900
 ./lib/itsumade.rb	Wed, 06 Jul 2011 02:38:18 +0900
 ./lib/itsumade/version.rb	Wed, 06 Jul 2011 03:03:22 +0900
 ./lib/itsumade/time_builder.rb	Wed, 06 Jul 2011 01:44:18 +0900
-./lib/itsumade/store.rb	Wed, 06 Jul 2011 03:24:43 +0900
+./lib/itsumade/store.rb	Wed, 06 Jul 2011 03:27:10 +0900
 ./lib/itsumade/opening_hours.rb	Wed, 06 Jul 2011 02:45:40 +0900
-./lib/itsumade/prompt.rb	Wed, 06 Jul 2011 03:22:37 +0900
-./lib/itsumade/manager.rb	Wed, 06 Jul 2011 02:54:33 +0900
+./lib/itsumade/prompt.rb	Wed, 06 Jul 2011 03:54:05 +0900
+./lib/itsumade/manager.rb	Wed, 06 Jul 2011 03:42:24 +0900
