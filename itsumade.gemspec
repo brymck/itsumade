@@ -4,7 +4,7 @@ require "itsumade/version"
  
 Gem::Specification.new do |s|
   s.name        = "itsumade"
-  s.version     = Dokoe::VERSION::STRING
+  s.version     = Itsumade::VERSION
   s.authors     = ["Bryan McKelvey"]
   s.email       = ["bryan.mckelvey@gmail.com"]
   s.homepage    = "http://rubygems.org/gems/itsumade"
