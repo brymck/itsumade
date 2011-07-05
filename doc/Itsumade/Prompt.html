@@ -496,7 +496,7 @@
 				<div class="method-heading">
 				
 					<span class="method-name">list_options</span><span
-						class="method-args">(options)</span>
+						class="method-args">(options, indent = nil)</span>
 					<span class="method-click-advice">click to toggle source</span>
 				
 				</div>
@@ -511,9 +511,9 @@
 						id="list-options-source">
 <pre>
     <span class="ruby-comment cmt"># File lib/itsumade/prompt.rb, line 40</span>
-40:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">list_options</span>(<span class="ruby-identifier">options</span>)
+40:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">list_options</span>(<span class="ruby-identifier">options</span>, <span class="ruby-identifier">indent</span> = <span class="ruby-keyword kw">nil</span>)
 41:       <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
-42:       <span class="ruby-identifier">options</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">option</span><span class="ruby-operator">|</span> 
+42:       <span class="ruby-identifier">options</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">option</span><span class="ruby-operator">|</span>
 43:         <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{'% 2d' % i}: #{option}&quot;</span>
 44:         <span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
 45:       <span class="ruby-keyword kw">end</span>

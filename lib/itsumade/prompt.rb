@@ -37,9 +37,9 @@ module Itsumade
       puts ANSI.yellow + ANSI.bold + crumbs.join(' > ').upcase + ANSI.clear
     end
 
-    def list_options(options)
+    def list_options(options, indent = nil)
       i = 0
-      options.each do |option| 
+      options.each do |option|
         puts "#{'% 2d' % i}: #{option}"
         i += 1
       end
