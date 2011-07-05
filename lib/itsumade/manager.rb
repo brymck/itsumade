@@ -22,10 +22,7 @@ module Itsumade
     def longest_name_length
       longest = 0
       @stores.each do |store|
-        name_length = store.name.length
-        if name_length > longest
-          longest = name_length
-        end
+        longest = store.name.length if longest < store.name.length
       end
       longest
     end

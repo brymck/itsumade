@@ -9,3 +9,7 @@
 2. Run in the same console:
 
     itsumade
+
+== License
+
+itsumade is licensed under the MIT License.
