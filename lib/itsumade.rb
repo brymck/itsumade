@@ -6,10 +6,13 @@ require 'itsumade/prompt'
 module Itsumade
   class << self
     attr_reader :manager, :prompt
-    def initialize
-      @manager = Manager.new
-      @prompt = Prompt.new
+
+    def run
+      @manager ||= Manager.new
+      @prompt  ||= Prompt.new(@manager)
       @prompt.run
     end
   end
 end
+
+Itsumade.run

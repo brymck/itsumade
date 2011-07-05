@@ -1,25 +1,31 @@
 require 'singleton'
+require 'itsumade/manager'
 
 module Itsumade
   class Prompt
-    def initialize
-
+    def initialize(manager)
+      @manager = manager
     end
-
+    
     def run
       while true
-        puts "1: Add store\n" \
-             "2: Edit store\n" \
-             "0: Exit"
+        i = 1
+        @manager.each do |store|
+          puts "#{'% 2d' % i}: #{store}"
+          i += 1
+        end
+
+        puts "a: Add store\n" \
+             "x: Exit"
         print 'Your selection: '
         response = gets.chomp
         case response
-        when '1'
+        when 'a'
           add_store
-        when '2'
-          edit_store
-        when '0'
+        when 'x'
           exit
+        else
+          puts 'hi'
         end
       end
     end
@@ -27,11 +33,13 @@ module Itsumade
     private
 
     def add_store
-
+      print 'Enter name: '
+      @manager << gets.chomp
+      edit_store
     end
 
     def edit_store
-
+      puts @manager.stores
     end
   end
 end

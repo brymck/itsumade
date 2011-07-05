@@ -1,7 +1,9 @@
+require 'itsumade/ansi'
 require 'itsumade/opening_hours'
 
 module Itsumade
   class Store
+    include Ansi
     attr_reader :name
 
     def initialize(name)
@@ -19,6 +21,10 @@ module Itsumade
     
     def []=(index, hours)
       @hours[index] = hours
+    end
+
+    def to_s
+      name.red
     end
   end
 end
