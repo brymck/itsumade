@@ -181,7 +181,12 @@
 			<h3 class="section-header">Constants</h3>
 			<dl>
 			
-				<dt><a name="YAML_FILENAME">YAML_FILENAME</a></dt>
+				<dt><a name="SAVE_DIRECTORY">SAVE_DIRECTORY</a></dt>
+				
+				<dd class="description"></dd>
+				
+			
+				<dt><a name="YAML_PATH">YAML_PATH</a></dt>
 				
 				<dd class="description"></dd>
 				
@@ -240,11 +245,11 @@
 					<div class="method-source-code"
 						id="new-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/itsumade/manager.rb, line 10</span>
-10:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>
-11:       <span class="ruby-ivar">@stores</span> = []
-12:       <span class="ruby-identifier">load</span>
-13:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/itsumade/manager.rb, line 11</span>
+11:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>
+12:       <span class="ruby-ivar">@stores</span> = []
+13:       <span class="ruby-identifier">load</span>
+14:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -281,11 +286,11 @@
 					<div class="method-source-code"
 						id="--source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/itsumade/manager.rb, line 61</span>
-61:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-identifier">name</span>)
-62:       <span class="ruby-ivar">@stores</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Store</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">name</span>, <span class="ruby-keyword kw">self</span>)
-63:       <span class="ruby-identifier">save</span>
-64:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/itsumade/manager.rb, line 63</span>
+63:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-identifier">name</span>)
+64:       <span class="ruby-ivar">@stores</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Store</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">name</span>, <span class="ruby-keyword kw">self</span>)
+65:       <span class="ruby-identifier">save</span>
+66:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -316,10 +321,10 @@
 					<div class="method-source-code"
 						id="--source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/itsumade/manager.rb, line 66</span>
-66:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">index</span>)
-67:       <span class="ruby-ivar">@stores</span>[<span class="ruby-identifier">index</span>]
-68:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/itsumade/manager.rb, line 68</span>
+68:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">index</span>)
+69:       <span class="ruby-ivar">@stores</span>[<span class="ruby-identifier">index</span>]
+70:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -350,11 +355,11 @@
 					<div class="method-source-code"
 						id="--source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/itsumade/manager.rb, line 70</span>
-70:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">index</span>, <span class="ruby-identifier">name</span>)
-71:       <span class="ruby-ivar">@stores</span>[<span class="ruby-identifier">index</span>] = <span class="ruby-constant">Store</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">name</span>, <span class="ruby-keyword kw">self</span>)
-72:       <span class="ruby-identifier">save</span>
-73:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/itsumade/manager.rb, line 72</span>
+72:     <span class="ruby-keyword kw">def</span> <span class="ruby-operator">[]=</span>(<span class="ruby-identifier">index</span>, <span class="ruby-identifier">name</span>)
+73:       <span class="ruby-ivar">@stores</span>[<span class="ruby-identifier">index</span>] = <span class="ruby-constant">Store</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">name</span>, <span class="ruby-keyword kw">self</span>)
+74:       <span class="ruby-identifier">save</span>
+75:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -385,11 +390,11 @@
 					<div class="method-source-code"
 						id="delete-at-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/itsumade/manager.rb, line 56</span>
-56:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_at</span>(<span class="ruby-identifier">index</span>)
-57:       <span class="ruby-ivar">@stores</span>.<span class="ruby-identifier">delete_at</span> <span class="ruby-identifier">index</span>
-58:       <span class="ruby-identifier">save</span>
-59:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/itsumade/manager.rb, line 58</span>
+58:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_at</span>(<span class="ruby-identifier">index</span>)
+59:       <span class="ruby-ivar">@stores</span>.<span class="ruby-identifier">delete_at</span> <span class="ruby-identifier">index</span>
+60:       <span class="ruby-identifier">save</span>
+61:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -420,10 +425,10 @@
 					<div class="method-source-code"
 						id="each-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/itsumade/manager.rb, line 15</span>
-15:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>
-16:       <span class="ruby-ivar">@stores</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">store</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">store</span> }
-17:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/itsumade/manager.rb, line 16</span>
+16:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">each</span>
+17:       <span class="ruby-ivar">@stores</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">store</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">yield</span> <span class="ruby-identifier">store</span> }
+18:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -454,10 +459,10 @@
 					<div class="method-source-code"
 						id="length-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/itsumade/manager.rb, line 19</span>
-19:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">length</span>
-20:       <span class="ruby-ivar">@stores</span>.<span class="ruby-identifier">length</span>
-21:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/itsumade/manager.rb, line 20</span>
+20:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">length</span>
+21:       <span class="ruby-ivar">@stores</span>.<span class="ruby-identifier">length</span>
+22:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -492,17 +497,17 @@
 					<div class="method-source-code"
 						id="load-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/itsumade/manager.rb, line 45</span>
-45:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load</span>
-46:       <span class="ruby-keyword kw">begin</span>
-47:         <span class="ruby-identifier">output</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">YAML_FILENAME</span>, <span class="ruby-value str">'r'</span>)
-48:         <span class="ruby-ivar">@stores</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">output</span>.<span class="ruby-identifier">read</span>)
-49:         <span class="ruby-ivar">@stores</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">store</span><span class="ruby-operator">|</span> <span class="ruby-identifier">store</span>.<span class="ruby-identifier">observers</span> = [<span class="ruby-keyword kw">self</span>] }
-50:         <span class="ruby-identifier">output</span>.<span class="ruby-identifier">close</span>
-51:       <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ENOENT</span>
-52:         <span class="ruby-identifier">puts</span> <span class="ruby-value str">'No stores currently saved.'</span>
-53:       <span class="ruby-keyword kw">end</span>
-54:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/itsumade/manager.rb, line 47</span>
+47:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load</span>
+48:       <span class="ruby-keyword kw">begin</span>
+49:         <span class="ruby-identifier">output</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">YAML_PATH</span>, <span class="ruby-value str">'r'</span>)
+50:         <span class="ruby-ivar">@stores</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">output</span>.<span class="ruby-identifier">read</span>)
+51:         <span class="ruby-ivar">@stores</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">store</span><span class="ruby-operator">|</span> <span class="ruby-identifier">store</span>.<span class="ruby-identifier">observers</span> = [<span class="ruby-keyword kw">self</span>] }
+52:         <span class="ruby-identifier">output</span>.<span class="ruby-identifier">close</span>
+53:       <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ENOENT</span>
+54:         <span class="ruby-identifier">puts</span> <span class="ruby-constant">ANSI</span>.<span class="ruby-identifier">red</span> <span class="ruby-operator">+</span> <span class="ruby-value str">'No stores currently saved.'</span> <span class="ruby-operator">+</span> <span class="ruby-constant">ANSI</span>.<span class="ruby-identifier">clear</span>
+55:       <span class="ruby-keyword kw">end</span>
+56:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -533,14 +538,14 @@
 					<div class="method-source-code"
 						id="longest-name-length-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/itsumade/manager.rb, line 23</span>
-23:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">longest_name_length</span>
-24:       <span class="ruby-identifier">longest</span> = <span class="ruby-value">0</span>
-25:       <span class="ruby-ivar">@stores</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">store</span><span class="ruby-operator">|</span>
-26:         <span class="ruby-identifier">longest</span> = <span class="ruby-identifier">store</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">length</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">longest</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">store</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">length</span>
-27:       <span class="ruby-keyword kw">end</span>
-28:       <span class="ruby-identifier">longest</span>
-29:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/itsumade/manager.rb, line 24</span>
+24:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">longest_name_length</span>
+25:       <span class="ruby-identifier">longest</span> = <span class="ruby-value">0</span>
+26:       <span class="ruby-ivar">@stores</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">store</span><span class="ruby-operator">|</span>
+27:         <span class="ruby-identifier">longest</span> = <span class="ruby-identifier">store</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">length</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">longest</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">store</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">length</span>
+28:       <span class="ruby-keyword kw">end</span>
+29:       <span class="ruby-identifier">longest</span>
+30:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -571,12 +576,13 @@
 					<div class="method-source-code"
 						id="save-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/itsumade/manager.rb, line 37</span>
-37:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">save</span>
-38:       <span class="ruby-identifier">output</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">YAML_FILENAME</span>, <span class="ruby-value str">'w'</span>)
-39:       <span class="ruby-identifier">output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-ivar">@stores</span>)
-40:       <span class="ruby-identifier">output</span>.<span class="ruby-identifier">close</span>
-41:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/itsumade/manager.rb, line 38</span>
+38:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">save</span>
+39:       <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">mkdir</span>(<span class="ruby-constant">SAVE_DIRECTORY</span>) <span class="ruby-keyword kw">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-constant">SAVE_DIRECTORY</span>)
+40:       <span class="ruby-identifier">output</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">YAML_PATH</span>, <span class="ruby-value str">'w'</span>)
+41:       <span class="ruby-identifier">output</span>.<span class="ruby-identifier">puts</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-ivar">@stores</span>)
+42:       <span class="ruby-identifier">output</span>.<span class="ruby-identifier">close</span>
+43:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -640,10 +646,10 @@
 					<div class="method-source-code"
 						id="sort--source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/itsumade/manager.rb, line 33</span>
-33:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sort!</span>
-34:       <span class="ruby-ivar">@stores</span>.<span class="ruby-identifier">sort!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">y</span>.<span class="ruby-identifier">name</span> }
-35:     <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/itsumade/manager.rb, line 34</span>
+34:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">sort!</span>
+35:       <span class="ruby-ivar">@stores</span>.<span class="ruby-identifier">sort!</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span><span class="ruby-operator">|</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">&lt;=&gt;</span> <span class="ruby-identifier">y</span>.<span class="ruby-identifier">name</span> }
+36:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

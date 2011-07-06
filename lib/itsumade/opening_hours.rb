@@ -11,7 +11,7 @@ module Itsumade
     end
 
     def to_s
-      # Allows lazy creation of @text
+      # Caches result as @text
       @text ||= "#{@start.strftime('%a: %l:%M %p')} - " \
                 "#{@end.strftime('%l:%M %p')}"
     end

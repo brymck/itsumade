@@ -618,9 +618,9 @@
 73:       <span class="ruby-ivar">@hours</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hours</span><span class="ruby-operator">|</span>
 74:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hours</span>.<span class="ruby-identifier">end</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">relative</span>
 75:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hours</span>.<span class="ruby-identifier">start</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">relative</span>
-76:             <span class="ruby-keyword kw">return</span> <span class="ruby-constant">ANSI</span>.<span class="ruby-identifier">green</span> <span class="ruby-operator">+</span> <span class="ruby-node">&quot;open until   #{hours.end.strftime('%l:%M %p')}&quot;</span> <span class="ruby-operator">+</span>   <span class="ruby-constant">ANSI</span>.<span class="ruby-identifier">clear</span>
+76:             <span class="ruby-keyword kw">return</span> <span class="ruby-node">&quot;#{ANSI.green}  open until #{hours.end.strftime('%l:%M %p')}#{ANSI.clear}&quot;</span>
 77:           <span class="ruby-keyword kw">else</span>
-78:             <span class="ruby-keyword kw">return</span> <span class="ruby-constant">ANSI</span>.<span class="ruby-identifier">red</span> <span class="ruby-operator">+</span>   <span class="ruby-node">&quot;closed until #{hours.start.strftime('%l:%M %p')}&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-constant">ANSI</span>.<span class="ruby-identifier">clear</span>
+78:             <span class="ruby-keyword kw">return</span> <span class="ruby-node">&quot;#{ANSI.red  }closed until #{hours.start.strftime('%l:%M %p')}#{ANSI.clear}&quot;</span>
 79:           <span class="ruby-keyword kw">end</span>
 80:         <span class="ruby-keyword kw">end</span>
 81:       <span class="ruby-keyword kw">end</span>
@@ -658,7 +658,7 @@
 <pre>
     <span class="ruby-comment cmt"># File lib/itsumade/store.rb, line 85</span>
 85:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
-86:       <span class="ruby-identifier">name</span> <span class="ruby-operator">+</span> <span class="ruby-value str">' '</span> * (<span class="ruby-identifier">@@indent</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">length</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">status</span>
+86:       <span class="ruby-identifier">name</span> <span class="ruby-operator">+</span> <span class="ruby-value str">' '</span> * [<span class="ruby-identifier">@@indent</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">length</span>, <span class="ruby-value">0</span>].<span class="ruby-identifier">max</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">status</span>
 87:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					

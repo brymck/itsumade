@@ -292,7 +292,7 @@
 <pre>
     <span class="ruby-comment cmt"># File lib/itsumade/opening_hours.rb, line 13</span>
 13:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_s</span>
-14:       <span class="ruby-comment cmt"># Allows lazy creation of @text</span>
+14:       <span class="ruby-comment cmt"># Caches result as @text</span>
 15:       <span class="ruby-ivar">@text</span> <span class="ruby-operator">||=</span> <span class="ruby-node">&quot;#{@start.strftime('%a: %l:%M %p')} - &quot;</span>                  <span class="ruby-node">&quot;#{@end.strftime('%l:%M %p')}&quot;</span>
 16:     <span class="ruby-keyword kw">end</span></pre>
 					</div>

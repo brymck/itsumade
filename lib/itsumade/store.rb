@@ -7,7 +7,7 @@ module Itsumade
     include Observable
     attr_accessor :observers
     attr_reader :name
-    @@indent = 26
+    @@indent = 28
 
     def initialize(name, manager)
       @name = name
