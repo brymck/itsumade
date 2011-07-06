@@ -4,7 +4,8 @@ require 'itsumade/store'
 module Itsumade
   class Manager
     include Enumerable
-    YAML_FILENAME = File.dirname(__FILE__) + '/data.yml'
+    SAVE_DIRECTORY = File.expand_path('~/.itsumade')
+    YAML_PATH = "#{SAVE_DIRECTORY}/data.yml"
     attr_reader :stores
 
     def initialize
@@ -35,7 +36,8 @@ module Itsumade
     end
 
     def save
-      output = File.new(YAML_FILENAME, 'w')
+      Dir.mkdir(SAVE_DIRECTORY) unless File.directory?(SAVE_DIRECTORY)
+      output = File.new(YAML_PATH, 'w')
       output.puts YAML.dump(@stores)
       output.close
     end
@@ -44,12 +46,12 @@ module Itsumade
 
     def load
       begin
-        output = File.new(YAML_FILENAME, 'r')
+        output = File.new(YAML_PATH, 'r')
         @stores = YAML.load(output.read)
         @stores.each { |store| store.observers = [self] }
         output.close
       rescue Errno::ENOENT
-        puts 'No stores currently saved.'
+        puts ANSI.red + 'No stores currently saved.' + ANSI.clear
       end
     end
 

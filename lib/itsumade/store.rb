@@ -7,7 +7,7 @@ module Itsumade
     include Observable
     attr_accessor :observers
     attr_reader :name
-    @@indent = 20
+    @@indent = 26
 
     def initialize(name, manager)
       @name = name
@@ -73,9 +73,9 @@ module Itsumade
       @hours.each do |hours|
         if hours.end > relative
           if hours.start < relative
-            return ANSI.green + "open until   #{hours.end.strftime('%l:%M %p')}" +   ANSI.clear
+            return "#{ANSI.green}  open until #{hours.end.strftime('%l:%M %p')}#{ANSI.clear}"
           else
-            return ANSI.red +   "closed until #{hours.start.strftime('%l:%M %p')}" + ANSI.clear
+            return "#{ANSI.red  }closed until #{hours.start.strftime('%l:%M %p')}#{ANSI.clear}"
           end
         end
       end
@@ -83,7 +83,7 @@ module Itsumade
     end
 
     def to_s
-      name + ' ' * (@@indent - name.length) + status
+      name + ' ' * [@@indent - name.length, 0].max + status
     end
   end
 end

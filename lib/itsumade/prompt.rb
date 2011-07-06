@@ -4,7 +4,10 @@ require 'itsumade/manager'
 module Itsumade
   class Prompt
     DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday',
-            'Friday', 'Saturday', 'Weekdays', 'Weekends']
+            'Friday', 'Saturday', 'Weekdays', 'Weekends', 'Everyday']
+    WEEKDAYS_SELECTED = 7
+    WEEKENDS_SELECTED = 8
+    EVERYDAY_SELECTED = 9
 
     def initialize(manager)
       @manager = manager
@@ -66,17 +69,19 @@ module Itsumade
     def add_hours(index)
       breadcrumbs @manager[index].name, 'add hours'
       list_options DAYS
-      weekdays   = get_response('Enter your selection:      ').to_i
+      weekdays   = get_response('Enter start weekday (0-8): ').to_i
       start_hour = get_response('Enter start hour (0-23+):  ').to_i
       start_min  = get_response('Enter start minute (0-59): ').to_i
       end_hour   = get_response('Enter start hour (0-23+):  ').to_i
       end_min    = get_response('Enter start minute (0-59): ').to_i
       
       case weekdays
-      when 7 # All weekdays
+      when WEEKDAYS_SELECTED
         weekdays = 1..5
-      when 8 # All weekend
+      when WEEKENDS_SELECTED
         weekdays = [0, 6]
+      when EVERYDAY_SELECTED
+        weekdays = 0..6
       else
         weekdays = [weekdays]
       end
