@@ -4,7 +4,8 @@ require 'itsumade/store'
 module Itsumade
   class Manager
     include Enumerable
-    YAML_FILENAME = 'data.yml'
+    YAML_FILENAME = File.dirname(__FILE__) + '/data.yml'
+    puts YAML_FILENAME
     attr_reader :stores
 
     def initialize
